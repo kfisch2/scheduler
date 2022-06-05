@@ -3,6 +3,9 @@ body {
   font-size: 16px;
   line-height: 1;
 }
+div, .saveBtn {
+  padding: 10px;
+}
 
 textarea{
   background: transparent;
@@ -25,10 +28,7 @@ textarea{
   white-space: pre-wrap;
 }
 
-.time-block{
-  text-align: center;
-  border-radius: 15px;
-}
+
 
 .row {
   white-space: pre-wrap;

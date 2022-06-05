@@ -30,14 +30,24 @@ for(i=0; i < input.length; i++) {
 
 // hour
 let hour = document.querySelectorAll(".hour");
-let setTime = 09;
-for( i=0; i < hour.length; i++ ) {
-  hour[i].innerHTML = setTime++ + ":00";
-};
-
-// background color of hour
-if (setTime < getTime()) {
-  input.
+let d = new Date();
+let workHour = d.setTime(09);
+for(i=0; i < hour.length; i++ ) {
+  hour[i].innerHTML = workHour++ + ":00:00";
 }
 
-// save to localStorage
+// background color of hour
+  let time = new Date();
+  let userInput = document.getElementById("userInput")
+  if (time.getHours() < workHour) {
+    userInput.style.backgroundColor = "grey"
+  } else if (time.getHours() > workHour) {
+    userInput.style.backgroundColor = "green"
+  } else {
+    userInput.style.backgroundColor = "red"
+  };
+
+
+
+
+// save userInput to localStorage
