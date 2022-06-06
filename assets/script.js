@@ -34,19 +34,22 @@ let d = new Date();
 let workHour = d.setTime(09);
 for(i=0; i < hour.length; i++ ) {
   hour[i].innerHTML = workHour++ + ":00:00";
+  setBackgroundColor();
 }
 
 // background color of hour
+function setBackgroundColor () {
   let time = new Date();
   let userInput = document.getElementById("userInput")
-  if (time.getHours() < workHour) {
+  if (time.getHours() > workHour - 9) {
     userInput.style.backgroundColor = "grey"
-  } else if (time.getHours() > workHour) {
+  } else if (time.getHours() < workHour - 9) {
     userInput.style.backgroundColor = "green"
   } else {
     userInput.style.backgroundColor = "red"
   };
 
+}
 
 
 
