@@ -7,20 +7,6 @@ $(document).ready(function(){
   $("#showDate").text(value)
 });		
 
-let past = document.querySelector(".past");
-let present = document.querySelector(".present");
-let future = document.querySelector(".future");
-
-let currentTime = date.getTime();
-
-// time block
-// const nineAm = new Date('June 4, 2022 09:00:00');
-// const today = new Date()
-// if(nineAm < Date.now()) {
-//   past.style.backgroundColor = 'red';
-// } else {
-//   past.style.backgroundColor = 'green';
-// }
 
 // user input in rows
 let input = document.querySelectorAll(".input");
@@ -28,29 +14,44 @@ for(i=0; i < input.length; i++) {
   input[i].innerHTML = '<input type="text" name="task" placeholder="Enter event here" style="width:50" >'
 };
 
-// hour
+// hour and event blocks
 let hour = document.querySelectorAll(".hour");
 let d = new Date();
 let workHour = d.setTime(09);
-for(i=0; i < hour.length; i++ ) {
-  hour[i].innerHTML = workHour++ + ":00:00";
-  setBackgroundColor();
-}
+let userInput = document.querySelectorAll(".input")
 
-// background color of hour
-function setBackgroundColor () {
-  let time = new Date();
-  let userInput = document.getElementById("userInput")
-  if (time.getHours() > workHour - 9) {
-    userInput.style.backgroundColor = "grey"
-  } else if (time.getHours() < workHour - 9) {
-    userInput.style.backgroundColor = "green"
-  } else {
-    userInput.style.backgroundColor = "red"
+// function
+function timeBlock() { 
+  for(i=0; i < hour.length; i++ ) {
+    hour[i].innerHTML = workHour++ ;
   };
+};
 
-}
+// change background color depending on time of day
+function changeBackgroundColor (event) {
+  if(hour[event].innerHTML > new Date().getHours()) {
+    userInput[event].style.backgroundColor = "green"
+  } else if (hour[event].innerHTML < new Date().getHours()) {
+  userInput[event].style.backgroundColor = "grey"
+  } else {
+  userInput[event].style.backgroundColor = "red"
+  }
+};
+
+// iterate through each hour
+function hourOfDay () {
+  for (i=0; i < 9; i++) {
+  changeBackgroundColor(i);
+  }
+};
 
 
 
 // save userInput to localStorage
+
+
+
+
+
+timeBlock();
+hourOfDay();

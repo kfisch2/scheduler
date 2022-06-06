@@ -74,4 +74,5 @@ textarea{
 
 .input {
   text-align: right;
+  border: 1px solid black;
 }
