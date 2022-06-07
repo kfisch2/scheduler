@@ -1,11 +1,16 @@
-// current day/date 
-let date = new Date();
-$(document).ready(function(){
-  let day = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][date.getDay()]
-  let month = ["January", "February", "March", "April", "May", "June", "July", "August", "Septermber", "October", "November","December"][date.getMonth()]
-  let value = `${day}, ${month} ${date.getDate()} ${date.getFullYear()}`
-  $("#showDate").text(value)
-});		
+// current day/date
+let setTime = () => {
+  let date = moment().format("MMMM Do YYYY, h:mm:ss a");
+  $(document).ready(function(){
+  $("#showDate").text(date);
+  })
+};
+
+setTime();
+
+// refresh page every second
+setInterval(setTime, 1000)
+
 
 
 // user input in rows
@@ -14,27 +19,25 @@ for(i=0; i < input.length; i++) {
   input[i].innerHTML = '<input type="text" name="task" placeholder="Enter event here" style="width:50" >'
 };
 
-// hour and event blocks
+// hour and event variables
 let hour = document.querySelectorAll(".hour");
-let d = new Date();
-let workHour = d.setTime(09);
 let userInput = document.querySelectorAll(".input")
 
-// function
-function timeBlock() { 
+// hour block function
+function timeBlock(startTime) { 
   for(i=0; i < hour.length; i++ ) {
-    hour[i].innerHTML = workHour++ ;
+    hour[i].innerHTML = startTime++ ;
   };
 };
 
 // change background color depending on time of day
 function changeBackgroundColor (event) {
   if(hour[event].innerHTML > new Date().getHours()) {
-    userInput[event].style.backgroundColor = "green"
+    userInput[event].classList.add("future")
   } else if (hour[event].innerHTML < new Date().getHours()) {
-  userInput[event].style.backgroundColor = "grey"
+  userInput[event].classList.add("past")
   } else {
-  userInput[event].style.backgroundColor = "red"
+  userInput[event].classList.add("present")
   }
 };
 
@@ -45,13 +48,11 @@ function hourOfDay () {
   }
 };
 
-
-
 // save userInput to localStorage
 
 
 
 
 
-timeBlock();
+timeBlock(08);
 hourOfDay();
