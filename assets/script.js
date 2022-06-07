@@ -1,7 +1,9 @@
 // current day/date
 let currentHour = () => {
-  let date = moment().format("MMMM Do YYYY, h:mm:ss a");
+  let date = moment().format("dddd, MMMM Do YYYY");
+  let time = moment().format("h:mm:ss a")
   $("#showDate").text(date);
+  $("#showTime").text(time);
 };
 
 // display current time every second
