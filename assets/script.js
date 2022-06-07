@@ -1,13 +1,13 @@
 // current day/date
-let currentHour = () => {
+let currentDateAndTime = () => {
   let date = moment().format("dddd, MMMM Do YYYY");
-  let time = moment().format("h:mm:ss a")
-  $("#showDate").text(date);
-  $("#showTime").text(time);
+  let time = moment().format("HH:mm:ss")
+  $("#showDate").text("Today is " + date);
+  $("#showTime").text( "Current time: " + time);
 };
 
 // display current time every second
-setInterval(currentHour, 1000)
+setInterval(currentDateAndTime, 1000)
 
 
 // hour
@@ -17,7 +17,9 @@ let userInput = document.querySelectorAll(".input")
 
 
 // hour block function
-function timeBlock(startTime) {
+// can I use moment? 
+let startTime = 09;
+function timeBlock() {
   for (i = 0; i < hour.length; i++) {
     hour[i].innerHTML = startTime++;
   };
@@ -39,6 +41,7 @@ function hourOfDay() {
   for (i = 0; i < 9; i++) {
     changeBackgroundColor(i);
   }
+
 };
 
 // add user event to hour blocks
@@ -256,8 +259,8 @@ render2PMTask();
 render3PMTask();
 render4PMTask();
 render5PMTask();
-currentHour();
-timeBlock(09);
+currentDateAndTime();
+timeBlock();
 hourOfDay();
 
 
